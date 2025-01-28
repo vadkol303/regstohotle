@@ -9,10 +9,18 @@
             margin: 0;
             padding: 20px;
             font-family: 'Roboto', sans-serif;
-            background: var(--tg-theme-bg-color, #ffffff);
+            background: var(--tg-theme-bg-color, #56569B);
             color: var(--tg-theme-text-color, #000000);
         }
+		.header-image {
+            text-align: center;
+            margin-bottom: 20px; /* Отступ под картинкой */
+        }
 
+        .header-image img {
+            max-width: 150px; /* Размер картинки */
+            height: auto;
+        }
         .container {
             max-width: 600px;
             margin: 0 auto;
@@ -76,6 +84,10 @@
     </style>
 </head>
 <body>
+	<div class="header-image">
+        <img src="./logo1.svg" alt="Логотип" style="max-width: 100%; height: auto;">
+    </div>
+	
     <div class="container">
         <h1>Регистрация</h1>
         <form id="registrationForm" onsubmit="submitForm(event)">
