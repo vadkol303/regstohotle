@@ -1,13 +1,13 @@
 @font-face {
     font-family: 'TT Runs Black';
-    src: url('TT Runs Black.ttf') format('truetype'); /* Подключение TTF-шрифта */
+    src: url('./TT Runs Black.ttf') format('truetype'); /* Подключение TTF-шрифта */
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
     font-family: 'TT Runs Regular';
-    src: url('TT Runs Regular.ttf') format('truetype'); /* Подключаем шрифт */
+    src: url('./TT Runs Regular.ttf') format('truetype'); /* Подключаем шрифт */
     font-weight: normal;
     font-style: normal;
 }
