@@ -58,7 +58,8 @@ body {
 
 .person-photo {
     width: 120px; /* Размер фото */
-    object-fit: contain; /* Вместо cover */
+    object-fit: contain; /* Вместо cover, чтобы не обрезало */
+    image-rendering: crisp-edges; /* Улучшает качество на некоторых браузерах */
 }
 
 /* Стили для полей формы */
