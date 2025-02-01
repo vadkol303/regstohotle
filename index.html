@@ -1,120 +1,65 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
-    <title>Регистрация</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            margin: 0;
-            padding: 20px;
-            font-family: 'Roboto', sans-serif;
-            background: var(--tg-theme-bg-color, #56569B);
-            color: var(--tg-theme-text-color, #000000);
-        }
-		.header-image {
-            text-align: center;
-            margin-bottom: 20px; /* Отступ под картинкой */
-        }
-
-        .header-image img {
-            max-width: 150px; /* Размер картинки */
-            height: auto;
-        }
-        .container {
-            max-width: 600px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        label {
-            display: block;
-            margin-bottom: 5px;
-            color: var(--tg-theme-text-color, #000000);
-        }
-
-        input {
-            width: 100%;
-            padding: 12px;
-            border: 1px solid var(--tg-theme-hint-color, #999999);
-            border-radius: 8px;
-            background: var(--tg-theme-secondary-bg-color, #f5f5f5);
-            color: var(--tg-theme-text-color, #000000);
-            font-size: 16px;
-            box-sizing: border-box;
-        }
-
-        input:focus {
-            outline: none;
-            border-color: var(--tg-theme-button-color, #2481cc);
-        }
-
-        .button {
-            background: var(--tg-theme-button-color, #2481cc);
-            color: var(--tg-theme-button-text-color, #ffffff);
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            transition: opacity 0.2s;
-        }
-
-        .button:hover {
-            opacity: 0.9;
-        }
-
-        .error {
-            color: #ff4444;
-            font-size: 14px;
-            margin-top: 5px;
-            display: none;
-        }
-
-        h1 {
-            color: var(--tg-theme-text-color, #000000);
-            text-align: center;
-            margin-bottom: 30px;
-        }
-    </style>
+    <title>Регистрация</title>
+    
+    <!-- Подключаем Telegram WebApp API -->
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    
+    <!-- Подключаем внешний файл стилей -->
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
+
 <body>
-	<div class="header-image">
-        <img src="./logo1.svg" alt="Логотип" style="max-width: 100%; height: auto;">
+    <!-- Блок с логотипом -->
+    <div class="header-image">
+        <img src="logo1.svg" alt="Логотип">
     </div>
-	
+
+    <!-- Основной контейнер -->
     <div class="container">
         <h1>Регистрация</h1>
+
+        <!-- Форма регистрации -->
         <form id="registrationForm" onsubmit="submitForm(event)">
+            
+            <!-- Поле ввода ФИО -->
             <div class="form-group">
-                <label for="fullname">ФИО:</label>
-                <input type="text" id="fullname" required>
+                <input type="text" id="fullname"  placeholder="ФИО" required>
                 <div class="error" id="fullnameError">Пожалуйста, введите ФИО</div>
             </div>
-            
+
+            <!-- Поле ввода телефона -->
             <div class="form-group">
-                <label for="phone">Телефон:</label>
                 <input type="tel" id="phone" pattern="\+7[0-9]{10}" placeholder="+7XXXXXXXXXX" required>
                 <div class="error" id="phoneError">Введите корректный номер телефона в формате +7XXXXXXXXXX</div>
             </div>
 
+            <!-- Кнопка отправки формы -->
             <button type="submit" class="button">Зарегистрироваться</button>
         </form>
     </div>
-
+	<div class="photo-container">
+    	<img src="person1.svg" alt="Человек 1" class="person-photo">
+    	<img src="person2.svg" alt="Человек 2" class="person-photo">
+	</div>
     <script>
         let tg = window.Telegram.WebApp;
+
+        // Разворачиваем WebApp на весь экран
         tg.expand();
 
+        // Отключаем автоматическое изменение фона Telegram
+        document.body.style.background = "#56569B";
+
+        // Функция валидации телефона
         function validatePhone(phone) {
             return /^\+7[0-9]{10}$/.test(phone);
         }
 
+        // Функция отправки формы
         function submitForm(event) {
             event.preventDefault();
             
@@ -125,7 +70,6 @@
             document.getElementById('fullnameError').style.display = 'none';
             document.getElementById('phoneError').style.display = 'none';
             
-            // Валидация
             let hasError = false;
             
             if (!fullname) {
@@ -151,7 +95,7 @@
             tg.close();
         }
 
-        // Автоматическая форматирование телефона
+        // Автоматическое форматирование телефона
         document.getElementById('phone').addEventListener('input', function(e) {
             let value = e.target.value.replace(/\D/g, '');
             if (value.length > 0 && !value.startsWith('7')) {

@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'TT Runs Black';
+    src: url('TT Runs Black.ttf') format('truetype'); /* Подключение TTF-шрифта */
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TT Runs Regular';
+    src: url('TT Runs Regular.ttf') format('truetype'); /* Подключаем шрифт */
+    font-weight: normal;
+    font-style: normal;
+}
+
+h1 {
+    color: #ffffff !important; /* Принудительно делаем текст белым */
+    font-family: 'TT Runs Black', sans-serif; /* Меняем шрифт */
+    text-align: center; /* Центрируем */
+    margin-top: 10px; /* Уменьшаем верхний отступ */
+    margin-bottom: 15px; /* Уменьшаем нижний отступ, чтобы текст не был слишком далеко от формы */
+}
+
+/* Общие стили */
+body {
+    margin: 0;
+    padding: 20px;
+    font-family: 'Roboto', sans-serif;
+    background: #56569B; /* Фиксированный цвет фона */
+    color: #000000;
+}
+
+/* Стили для логотипа */
+.header-image {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.header-image img {
+    display: block;   /* Убираем inline-режим, чтобы работало центрирование */
+    margin: 0 auto;   /* Делаем центрирование */
+    max-width: 350px; /* Устанавливаем максимальный размер */
+    height: auto;     /* Сохраняем пропорции */
+}
+
+/* Основной контейнер */
+.container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.photo-container {
+    display: flex; /* Делаем изображения в ряд */
+    justify-content: center; /* Центрируем фото */
+    gap: 40px; /* Одинаковое расстояние между фото */
+    margin-top: 30px; /* Отступ сверху, чтобы фото не прилегали к кнопке */
+}
+
+.person-photo {
+    width: 120px; /* Размер фото */
+    object-fit: cover; /* Сохраняем пропорции и обрезаем лишнее */
+}
+
+/* Стили для полей формы */
+.form-group {
+    margin-bottom: 20px;
+}
+
+/* Стили для подписей полей */
+label {
+    display: block;
+    margin-bottom: 5px;
+    color: #000000;
+}
+
+/* Поля ввода */
+input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #999999;
+    border-radius: 8px;
+    background: #f5f5f5;
+    color: #000000;
+    font-size: 16px;
+    box-sizing: border-box;
+}
+
+/* Изменение стиля при фокусе */
+input:focus {
+    outline: none;
+    border-color: #2481cc;
+}
+
+input::placeholder {
+    font-family: 'TT Runs Regular', sans-serif; /* Задаем шрифт */
+    color: #333333; /* Серый цвет placeholder'а, можно изменить */
+    font-size: 16px; /* Размер шрифта */
+    opacity: 1; /* Делаем текст четче (в некоторых браузерах placeholder полупрозрачный) */
+}
+
+/* Стили кнопки */
+.button {
+	font-family: 'TT Runs Regular', sans-serif; /* Устанавливаем шрифт */
+    background: #DB9CC3;
+    color: #ffffff;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    width: 100%;
+    transition: opacity 0.2s;
+}
+
+/* Эффект наведения на кнопку */
+.button:hover {
+    opacity: 0.9;
+}
+
+/* Стили сообщений об ошибке */
+.error {
+    color: #ff4444;
+    font-size: 14px;
+    margin-top: 5px;
+    display: none;
+}
+
+/* Стили заголовка */
+h1 {
+    color: #000000;
+    text-align: center;
+    margin-bottom: 30px;
+}
