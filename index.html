@@ -36,6 +36,25 @@
                 <input type="tel" id="phone" pattern="\+7[0-9]{10}" placeholder="+7XXXXXXXXXX" required>
                 <div class="error" id="phoneError">Введите корректный номер телефона в формате +7XXXXXXXXXX</div>
             </div>
+            
+            <!-- Поле выбора отеля -->
+            <div class="form-group">
+                <select id="hotel" required>
+                    <option value="" disabled selected>Выберите отель</option>
+                    <option value="Лесная">Vertical We&i Лесная</option>
+                    <option value="Московская">Vertical We&i Московская</option>
+                </select>
+                <div class="error" id="hotelError">Пожалуйста, выберите отель</div>
+            </div>
+            
+            <!-- Блок согласия с политикой -->
+            <div class="form-group privacy-policy">
+                <div class="checkbox-container">
+                    <input type="checkbox" id="privacyAgree" required>
+                    <label for="privacyAgree">Я согласен на обработку персональных данных и принимаю <a href="#" class="policy-link">пользовательское соглашение</a></label>
+                </div>
+                <div class="error" id="privacyError">Необходимо согласие на обработку персональных данных</div>
+            </div>
 
             <!-- Кнопка отправки формы -->
             <button type="submit" class="button">Зарегистрироваться</button>
@@ -65,10 +84,14 @@
             
             const fullname = document.getElementById('fullname').value.trim();
             const phone = document.getElementById('phone').value.trim();
+            const hotel = document.getElementById('hotel').value;
+            const privacyAgree = document.getElementById('privacyAgree').checked;
             
             // Сброс ошибок
             document.getElementById('fullnameError').style.display = 'none';
             document.getElementById('phoneError').style.display = 'none';
+            document.getElementById('hotelError').style.display = 'none';
+            document.getElementById('privacyError').style.display = 'none';
             
             let hasError = false;
             
@@ -82,13 +105,24 @@
                 hasError = true;
             }
             
+            if (!hotel) {
+                document.getElementById('hotelError').style.display = 'block';
+                hasError = true;
+            }
+            
+            if (!privacyAgree) {
+                document.getElementById('privacyError').style.display = 'block';
+                hasError = true;
+            }
+            
             if (hasError) return;
 
             // Отправка данных в бота
             const data = {
                 type: 'registration',
                 fullname: fullname,
-                phone: phone
+                phone: phone,
+                hotel: hotel
             };
 
             tg.sendData(JSON.stringify(data));
