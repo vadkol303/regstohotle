@@ -51,7 +51,10 @@
             <div class="form-group privacy-policy">
                 <div class="checkbox-container">
                     <input type="checkbox" id="privacyAgree" required>
-                    <label for="privacyAgree">Я согласен на обработку персональных данных и принимаю <a href="#" class="policy-link" onclick="showAgreementModal(event)">пользовательское соглашение</a></label>
+                    <label for="privacyAgree">
+                        Я согласен на обработку персональных данных в соответствии с 
+                        <a href="https://vertical-hotel.ru/assets/Bl29gkUR.pdf" class="policy-link" target="_blank">политикой обработки персональных данных</a>
+                    </label>
                 </div>
                 <div class="error" id="privacyError">Необходимо согласие на обработку персональных данных</div>
             </div>
@@ -64,22 +67,6 @@
     	<img src="./person1.png" alt="Человек 1" class="person-photo">
     	<img src="./person2.png" alt="Человек 2" class="person-photo">
 	</div>
-    
-    <!-- Модальное окно для пользовательского соглашения -->
-    <div id="agreementModal" class="modal">
-        <div class="modal-content">
-            <span class="close-button" onclick="closeAgreementModal()">&times;</span>
-            <h2>Пользовательское соглашение</h2>
-            <div class="agreement-text">
-                <p>Настоящим я, в соответствии с требованиями Федерального закона от 27.07.2006 г. №152-ФЗ «О персональных данных», даю свое согласие на обработку моих персональных данных, включающих: фамилию, имя, отчество, номер телефона.</p>
-                <p>Я подтверждаю, что, давая такое согласие, действую свободно, своей волей и в своем интересе.</p>
-                <p>Согласие дается мною с целью участия в мероприятиях, проводимых отелями сети Vertical We&i.</p>
-                <p>Настоящее согласие предоставляется на осуществление любых действий в отношении моих персональных данных, которые необходимы для достижения указанных выше целей, включая (без ограничения) сбор, систематизацию, накопление, хранение, уточнение (обновление, изменение), использование, передачу третьим лицам, обезличивание, блокирование персональных данных, а также осуществление любых иных действий, предусмотренных действующим законодательством Российской Федерации.</p>
-                <p>Я проинформирован(а), что обработка моих персональных данных будет осуществляться в соответствии с действующим законодательством Российской Федерации.</p>
-            </div>
-            <button class="button" onclick="closeAgreementModal()">Закрыть</button>
-        </div>
-    </div>
     
     <script>
         let tg = window.Telegram.WebApp;
@@ -157,26 +144,6 @@
             }
             e.target.value = value;
         });
-        
-        // Функции для работы с модальным окном
-        function showAgreementModal(event) {
-            event.preventDefault();
-            document.getElementById('agreementModal').style.display = 'block';
-            document.body.style.overflow = 'hidden'; // Запрещаем прокрутку основной страницы
-        }
-
-        function closeAgreementModal() {
-            document.getElementById('agreementModal').style.display = 'none';
-            document.body.style.overflow = ''; // Возвращаем прокрутку основной страницы
-        }
-
-        // Закрытие модального окна при клике вне его содержимого
-        window.onclick = function(event) {
-            const modal = document.getElementById('agreementModal');
-            if (event.target === modal) {
-                closeAgreementModal();
-            }
-        }
     </script>
 </body>
 </html>
